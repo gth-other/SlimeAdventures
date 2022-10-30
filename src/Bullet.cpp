@@ -3,7 +3,7 @@
 
 Bullet::Bullet() = default;
 Bullet::Bullet(float x, float y, float dst_x, float dst_y) {
-    this->_hitbox = {x, y, 10, 10};
+    this->_hitbox = {x, y, 1, 1};
     this->_t0 = 1e+9;
     this->_vy = (float)std::sqrt(std::pow(dst_y * Bullet::v, 2) / (std::pow(dst_y, 2) + std::pow(dst_x, 2)));
     this->_vx = (float)std::sqrt(std::pow(Bullet::v, 2) - std::pow(this->_vy, 2));

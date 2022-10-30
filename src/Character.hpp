@@ -25,7 +25,7 @@ protected:
     bool _right;
     bool _alive;
 
-    static constexpr float MaximalUpdateDelay = 1 / 60.f;
+    static constexpr float MaximalUpdateDelay = 1 / 240.f;
 
     float _timer();
 

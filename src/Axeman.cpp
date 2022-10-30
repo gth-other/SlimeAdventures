@@ -13,8 +13,8 @@ Axeman::Axeman(float x, float y) {
 }
 void Axeman::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Axeman::DataWasLoaded) {
-        Axeman::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/axeman.png").c_str());
-        Axeman::Death = Mix_LoadWAV(LinkManager::path("data/sounds/axe.mp3").c_str());
+        Axeman::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/axeman.png", true).c_str());
+        Axeman::Death = Mix_LoadWAV(LinkManager::path("data/sounds/axe.mp3", true).c_str());
         Axeman::DataWasLoaded = true;
     }
 

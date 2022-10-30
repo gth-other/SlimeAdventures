@@ -14,9 +14,9 @@ Gunslinger::Gunslinger(float x, float y) {
 }
 void Gunslinger::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Gunslinger::DataWasLoaded) {
-        Gunslinger::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/gunslinger.png").c_str());
-        Gunslinger::Shoot = Mix_LoadWAV(LinkManager::path("data/sounds/shot.mp3").c_str());
-        Gunslinger::Death = Mix_LoadWAV(LinkManager::path("data/sounds/rifle.mp3").c_str());
+        Gunslinger::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/gunslinger.png", true).c_str());
+        Gunslinger::Shoot = Mix_LoadWAV(LinkManager::path("data/sounds/shot.mp3", true).c_str());
+        Gunslinger::Death = Mix_LoadWAV(LinkManager::path("data/sounds/rifle.mp3", true).c_str());
         Gunslinger::DataWasLoaded = true;
     }
 

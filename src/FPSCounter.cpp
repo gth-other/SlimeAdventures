@@ -16,7 +16,7 @@ void FPSCounter::update() {
 }
 void FPSCounter::draw(SDL_Renderer *renderer) {
     if (!FPSCounter::FontWasLoaded) {
-        FPSCounter::Font = TTF_OpenFont(LinkManager::path("data/fonts/BitterPro-Medium.ttf").c_str(), 18);
+        FPSCounter::Font = TTF_OpenFont(LinkManager::path("data/fonts/BitterPro-Medium.ttf", true).c_str(), 18);
         FPSCounter::FontWasLoaded = true;
     }
 

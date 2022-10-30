@@ -29,9 +29,9 @@ void Axeman::update(Rect player_hitbox, std::list<Bullet> &bullets, const Map &m
 
     float air_factor1;
 
-    for (int32_t i = 0; i <= (int32_t)(dt / (1.f / 256.f)); i = i + 1) {
-        dt_part = 1.f / 256.f;
-        if (i == (int32_t)(dt / (1.f / 256.f))) dt_part = dt - (float)i * (1.f / 256.f);
+    for (int32_t i = 0; i <= (int32_t)(dt / (Axeman::MaximalUpdateDelay)); i = i + 1) {
+        dt_part = Axeman::MaximalUpdateDelay;
+        if (i == (int32_t)(dt / (Axeman::MaximalUpdateDelay))) dt_part = dt - (float)i * Axeman::MaximalUpdateDelay;
 
         air_factor1 = this->_get_air_factor(map, Axeman::air_factor);
 

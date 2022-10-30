@@ -27,9 +27,9 @@ void Bullet::update(const Map &map) {
     float dt = this->_timer();
     float dt_part;
 
-    for (int32_t i = 0; i <= (int32_t)(dt / (1.f / 256.f)); i = i + 1) {
-        dt_part = 1.f / 256.f;
-        if (i == (int32_t)(dt / (1.f / 256.f))) dt_part = dt - (float)i * (1.f / 256.f);
+    for (int32_t i = 0; i <= (int32_t)(dt / Bullet::MaximalUpdateDelay); i = i + 1) {
+        dt_part = Bullet::MaximalUpdateDelay;
+        if (i == (int32_t)(dt / Bullet::MaximalUpdateDelay)) dt_part = dt - (float)i * Bullet::MaximalUpdateDelay;
 
         this->_update_x(dt_part, map);
         this->_update_y(dt_part, map);

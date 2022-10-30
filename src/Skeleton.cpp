@@ -29,9 +29,9 @@ void Skeleton::update(Rect player_hitbox, std::list<Bullet> &bullets, const Map 
 
     float air_factor1;
 
-    for (int32_t i = 0; i <= (int32_t)(dt / (1.f / 256.f)); i = i + 1) {
-        dt_part = 1.f / 256.f;
-        if (i == (int32_t)(dt / (1.f / 256.f))) dt_part = dt - (float)i * (1.f / 256.f);
+    for (int32_t i = 0; i <= (int32_t)(dt / Skeleton::MaximalUpdateDelay); i = i + 1) {
+        dt_part = Skeleton::MaximalUpdateDelay;
+        if (i == (int32_t)(dt / Skeleton::MaximalUpdateDelay)) dt_part = dt - (float)i * Skeleton::MaximalUpdateDelay;
 
         air_factor1 = this->_get_air_factor(map, Skeleton::air_factor);
 

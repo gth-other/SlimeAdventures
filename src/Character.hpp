@@ -25,6 +25,8 @@ protected:
     bool _right;
     bool _alive;
 
+    static constexpr float MaximalUpdateDelay = 1 / 60.f;
+
     float _timer();
 
     [[nodiscard]] float _get_air_factor(const Map &map, float air_factor);

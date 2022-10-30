@@ -31,9 +31,9 @@ void Gunslinger::update(Rect player_hitbox, std::list<Bullet> &bullets, const Ma
 
     float air_factor1;
 
-    for (int32_t i = 0; i <= (int32_t)(dt / (1.f / 256.f)); i = i + 1) {
-        dt_part = 1.f / 256.f;
-        if (i == (int32_t)(dt / (1.f / 256.f))) dt_part = dt - (float)i * (1.f / 256.f);
+    for (int32_t i = 0; i <= (int32_t)(dt / Gunslinger::MaximalUpdateDelay); i = i + 1) {
+        dt_part = Gunslinger::MaximalUpdateDelay;
+        if (i == (int32_t)(dt / Gunslinger::MaximalUpdateDelay)) dt_part = dt - (float)i * Gunslinger::MaximalUpdateDelay;
 
         this->_dt1 = this->_dt1 + dt_part;
         air_factor1 = this->_get_air_factor(map, Gunslinger::air_factor);

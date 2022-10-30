@@ -2,6 +2,7 @@
 #include <array>
 #include <cstdint>
 #include <ctime>
+#include "LinkManager.hpp"
 
 
 #pragma once

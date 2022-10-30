@@ -4,7 +4,7 @@
 Background::Background() = default;
 void Background::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Background::TextureWasLoaded) {
-        Background::Texture = IMG_LoadTexture(renderer, "../data/images/background.png");
+        Background::Texture = IMG_LoadTexture(renderer, LinkManager::path("data/images/background.png").c_str());
         Background::TextureWasLoaded = true;
     }
 

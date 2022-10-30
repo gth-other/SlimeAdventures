@@ -14,8 +14,8 @@ Bullet::Bullet(float x, float y, float dst_x, float dst_y) {
 }
 void Bullet::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Bullet::DataWasLoaded) {
-        Bullet::Textures = IMG_LoadTexture(renderer, "../data/images/characters/bullet.png");
-        Bullet::Death = Mix_LoadWAV("../data/sounds/ricochet.mp3");
+        Bullet::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/bullet.png").c_str());
+        Bullet::Death = Mix_LoadWAV(LinkManager::path("data/sounds/ricochet.mp3").c_str());
         Bullet::DataWasLoaded = true;
     }
 

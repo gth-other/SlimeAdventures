@@ -30,7 +30,9 @@ void endgame(SDL_Renderer *renderer, Camera camera) {
     SDL_RenderCopy(renderer, Finish, nullptr, &rect);
 }
 int main() {
-    if (!std::filesystem::is_directory("../appdata")) std::filesystem::copy("../data/appdata", "../appdata");
+    LinkManager::set_directory("..", false);
+
+    if (!std::filesystem::is_directory(LinkManager::path("appdata"))) std::filesystem::copy(LinkManager::path("data/appdata"), LinkManager::path("appdata"));
 
     SDL_Init(SDL_INIT_EVERYTHING);
     IMG_Init(IMG_INIT_PNG);
@@ -44,10 +46,10 @@ int main() {
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawBlendMode(renderer, static_cast<SDL_BlendMode>(SDL_TRUE));
     SDL_ShowCursor(0);
-    SDL_SetWindowIcon(window, IMG_Load("../data/images/logotype.png"));
+    SDL_SetWindowIcon(window, IMG_Load(LinkManager::path("data/images/logotype.png").c_str()));
     Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048);
 
-    TTF_Font *font = TTF_OpenFont("../data/fonts/BitterPro-Medium.ttf", 80);
+    TTF_Font *font = TTF_OpenFont(LinkManager::path("data/fonts/BitterPro-Medium.ttf").c_str(), 80);
     SDL_Surface *surface = TTF_RenderUTF8_Blended(font, "Поражение", {255, 255, 255, 255});
     Defeat = SDL_CreateTextureFromSurface(renderer, surface);
     surface = TTF_RenderUTF8_Blended(font, "Конец", {255, 255, 255, 255});
@@ -59,13 +61,13 @@ int main() {
     bool right;
     bool jump;
 
-    Map map = {"../data/level/map.tmx"};
+    Map map = {LinkManager::path("data/level/map.tmx")};
     Camera camera = {{0, 0, 32 * (float)map.tx(), 32 * (float)map.ty()}, {0, 0, (float)dm.w, (float)dm.h}};
-    Player player = {"../appdata/player.sles"};
+    Player player = {LinkManager::path("appdata/player.sles")};
     std::list<Bullet> bullets;
-    Enemies main_enemies = {"../appdata/main_enemies.sles"};
-    Enemies bridge_enemies = {"../appdata/bridge_enemies.sles"};
-    Enemies river_enemies = {"../appdata/river_enemies.sles"};
+    Enemies main_enemies = {LinkManager::path("appdata/main_enemies.sles")};
+    Enemies bridge_enemies = {LinkManager::path("appdata/bridge_enemies.sles")};
+    Enemies river_enemies = {LinkManager::path("appdata/river_enemies.sles")};
     Background background;
     Soundtrack soundtrack;
     FPSCounter counter;
@@ -80,11 +82,11 @@ int main() {
             if (event.type == SDL_QUIT or (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_ESCAPE)) return 0;
             else if (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_F10) show_FPS = !show_FPS;
             else if (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_RETURN) {
-                player = {"../appdata/player.sles"};
+                player = {LinkManager::path("appdata/player.sles")};
                 bullets.clear();
-                main_enemies = {"../appdata/main_enemies.sles"};
-                bridge_enemies = {"../appdata/bridge_enemies.sles"};
-                river_enemies = {"../appdata/river_enemies.sles"};
+                main_enemies = {LinkManager::path("appdata/main_enemies.sles")};
+                bridge_enemies = {LinkManager::path("appdata/bridge_enemies.sles")};
+                river_enemies = {LinkManager::path("appdata/river_enemies.sles")};
                 soundtrack.force_change();
             }
         }
@@ -122,10 +124,10 @@ int main() {
         }
         if (player.hitbox()._x >= 1369 * 32) endgame_was_activated = true;
         if (player.alive() and player.in_house(map)) {
-            player.save("../appdata/player.sles");
-            main_enemies.save("../appdata/main_enemies.sles");
-            bridge_enemies.save("../appdata/bridge_enemies.sles");
-            river_enemies.save("../appdata/river_enemies.sles");
+            player.save(LinkManager::path("appdata/player.sles"));
+            main_enemies.save(LinkManager::path("appdata/main_enemies.sles"));
+            bridge_enemies.save(LinkManager::path("appdata/bridge_enemies.sles"));
+            river_enemies.save(LinkManager::path("appdata/river_enemies.sles"));
         }
 
         background.draw(camera, renderer);

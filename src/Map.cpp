@@ -30,9 +30,9 @@ Map::Map(const std::string& path) {
 }
 void Map::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Map::Textures::TexturesWereLoaded) {
-        Map::Textures::SolidTiles = IMG_LoadTexture(renderer, "../data/images/tiles/solid.png");
-        Map::Textures::DangerousTiles = IMG_LoadTexture(renderer, "../data/images/tiles/dangerous.png");
-        Map::Textures::DecorationTiles = IMG_LoadTexture(renderer, "../data/images/tiles/decoration.png");
+        Map::Textures::SolidTiles = IMG_LoadTexture(renderer, LinkManager::path("data/images/tiles/solid.png").c_str());
+        Map::Textures::DangerousTiles = IMG_LoadTexture(renderer, LinkManager::path("data/images/tiles/dangerous.png").c_str());
+        Map::Textures::DecorationTiles = IMG_LoadTexture(renderer, LinkManager::path("data/images/tiles/decoration.png").c_str());
         Map::Textures::TexturesWereLoaded = true;
     }
 

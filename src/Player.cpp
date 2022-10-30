@@ -24,8 +24,8 @@ Player::Player(const std::string& path) {
 }
 void Player::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Player::DataWasLoaded) {
-        Player::Textures = IMG_LoadTexture(renderer, "../data/images/characters/slime.png");
-        Player::Death = Mix_LoadWAV("../data/sounds/water.mp3");
+        Player::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/slime.png").c_str());
+        Player::Death = Mix_LoadWAV(LinkManager::path("data/sounds/water.mp3").c_str());
         Player::DataWasLoaded = true;
     }
 

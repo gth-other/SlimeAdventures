@@ -13,8 +13,8 @@ Skeleton::Skeleton(float x, float y) {
 }
 void Skeleton::draw(Camera camera, SDL_Renderer *renderer) const {
     if (!Skeleton::DataWasLoaded) {
-        Skeleton::Textures = IMG_LoadTexture(renderer, "../data/images/characters/skeleton.png");
-        Skeleton::Death = Mix_LoadWAV("../data/sounds/bones.mp3");
+        Skeleton::Textures = IMG_LoadTexture(renderer, LinkManager::path("data/images/characters/skeleton.png").c_str());
+        Skeleton::Death = Mix_LoadWAV(LinkManager::path("../data/sounds/bones.mp3").c_str());
         Skeleton::DataWasLoaded = true;
     }
 

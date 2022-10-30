@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(SlimeAdventures)
 set(CMAKE_CXX_STANDARD 23)
 add_executable(SlimeAdventures
+        ../src/LinkManager.hpp ../src/LinkManager.cpp
         ../src/Rect.hpp ../src/Rect.cpp
         ../src/Camera.hpp ../src/Camera.cpp
         ../src/Map.hpp ../src/Map.cpp

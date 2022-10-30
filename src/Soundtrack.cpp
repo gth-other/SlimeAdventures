@@ -7,8 +7,8 @@ Soundtrack::Soundtrack() {
 }
 void Soundtrack::update() {
     if (!Soundtrack::MusicWasLoaded) {
-        Soundtrack::Music[0] = Mix_LoadMUS("../data/music/1.ogg");
-        Soundtrack::Music[1] = Mix_LoadMUS("../data/music/2.ogg");
+        Soundtrack::Music[0] = Mix_LoadMUS(LinkManager::path("data/music/1.ogg").c_str());
+        Soundtrack::Music[1] = Mix_LoadMUS(LinkManager::path("data/music/2.ogg").c_str());
         Soundtrack::MusicWasLoaded = true;
     }
 

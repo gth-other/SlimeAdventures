@@ -71,7 +71,7 @@ void Player::do_jump_after_kill() {
 void Player::kill() {
     if (this->_alive) {
         Mix_PlayChannel(-1, Player::Death, 0);
-        //this->_alive = false;
+        this->_alive = false;
     }
 }
 bool Player::in_house(const Map &map) const {

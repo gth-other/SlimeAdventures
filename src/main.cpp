@@ -32,7 +32,6 @@ void endgame(SDL_Renderer *renderer, Camera camera) {
 int main() {
     LinkManager::set_directory("..", "..");
 
-    std::filesystem::create_directory(LinkManager::path("", false));
     std::filesystem::create_directory(LinkManager::path("", true));
     if (!std::filesystem::is_directory(LinkManager::path("appdata", false))) std::filesystem::copy(LinkManager::path("data/appdata", true), LinkManager::path("appdata", false));
 

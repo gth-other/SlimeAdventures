@@ -83,7 +83,7 @@ int main() {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT or (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_ESCAPE)) return 0;
             else if (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_F10) show_FPS = !show_FPS;
-            else if (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_RETURN) {
+            else if (event.type == SDL_KEYDOWN and event.key.keysym.sym == SDLK_RETURN and !player.alive()) {
                 player = {LinkManager::path("appdata/player.sles", false)};
                 bullets.clear();
                 main_enemies = {LinkManager::path("appdata/main_enemies.sles", false)};

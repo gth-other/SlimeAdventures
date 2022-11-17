@@ -4,8 +4,11 @@
 Rect Character::hitbox() const {
     return this->_hitbox;
 }
-bool Character::right() const {
-    return this->_right;
+float Character::vx() const {
+    return this->_vx;
+}
+float Character::vy() const {
+    return this->_vy;
 }
 void Character::disappear() {
     this->_alive = false;

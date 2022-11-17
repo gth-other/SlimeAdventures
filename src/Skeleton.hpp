@@ -10,7 +10,7 @@ class Skeleton : public Enemy {
     // Ходит от одного препятствия до другого.
 public:
     Skeleton();
-    Skeleton(float x, float y);
+    Skeleton(float x, float y, float vx = 0, float vy = 0);
 
     void draw(Camera camera, SDL_Renderer *renderer) const override;
     void update(Rect player_hitbox, std::list<Bullet> &bullets, const Map &map) override;

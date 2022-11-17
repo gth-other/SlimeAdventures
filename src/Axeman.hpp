@@ -10,7 +10,7 @@ class Axeman : public Enemy {
     // Если игрок в зоне видимости, то преследует его. Если нет - ходит от одного препятствия до другого.
 public:
     Axeman();
-    Axeman(float x, float y);
+    Axeman(float x, float y, float vx = 0, float vy = 0);
 
     void draw(Camera camera, SDL_Renderer *renderer) const override;
     void update(Rect player_hitbox, std::list<Bullet> &bullets, const Map &map) override;

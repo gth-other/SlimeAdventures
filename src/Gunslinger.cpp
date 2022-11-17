@@ -2,11 +2,11 @@
 
 
 Gunslinger::Gunslinger() = default;
-Gunslinger::Gunslinger(float x, float y) {
+Gunslinger::Gunslinger(float x, float y, float vx, float vy) {
     this->_hitbox = {x, y, 50, 64};
     this->_t0 = 1e+9;
-    this->_vx = 0;
-    this->_vy = 0;
+    this->_vx = vx;
+    this->_vy = vy;
     this->_animation_ctr = 0;
     this->_right = true;
     this->_alive = true;

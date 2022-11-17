@@ -10,7 +10,7 @@ class Gunslinger : public Enemy {
     // Если игрок в зоне видимости, то останавливается и стреляет. Если нет - ходит от одного препятствия до другого.
 public:
     Gunslinger();
-    Gunslinger(float x, float y);
+    Gunslinger(float x, float y, float vx = 0, float vy = 0);
 
     void draw(Camera camera, SDL_Renderer *renderer) const override;
     void update(Rect player_hitbox, std::list<Bullet> &bullets, const Map &map) override;

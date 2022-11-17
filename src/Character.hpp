@@ -10,7 +10,8 @@ public:
 
     [[nodiscard]] Rect hitbox() const;
 
-    [[nodiscard]] bool right() const;
+    [[nodiscard]] float vx() const;
+    [[nodiscard]] float vy() const;
 
     virtual void kill() = 0;
     void disappear();

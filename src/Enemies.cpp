@@ -9,7 +9,7 @@ Enemies::Enemies(const std::string& path) {
 
     std::string buff;
     char type;
-    float x, y;
+    float x, y, vx, vy;
 
     while (std::getline(file, buff)) {
         ss = std::stringstream(buff);
@@ -19,18 +19,22 @@ Enemies::Enemies(const std::string& path) {
         if (ss.peek() == ' ') ss.ignore();
         ss >> y;
         if (ss.peek() == ' ') ss.ignore();
+        ss >> vx;
+        if (ss.peek() == ' ') ss.ignore();
+        ss >> vy;
+        if (ss.peek() == ' ') ss.ignore();
 
         switch (type) {
             case 's':
-                this->_skeletons.emplace_back(x, y);
+                this->_skeletons.emplace_back(x, y, vx, vy);
                 this->_enemies.push_back(&this->_skeletons.back());
                 break;
             case 'a':
-                this->_axemen.emplace_back(x, y);
+                this->_axemen.emplace_back(x, y, vx, vy);
                 this->_enemies.push_back(&this->_axemen.back());
                 break;
             case 'g':
-                this->_gunslingers.emplace_back(x, y);
+                this->_gunslingers.emplace_back(x, y, vx, vy);
                 this->_enemies.push_back(&this->_gunslingers.back());
                 break;
         }
@@ -55,9 +59,9 @@ void Enemies::add(const Enemies& enemies) {
 void Enemies::save(const std::string& path) {
     std::ofstream file(path);
 
-    for (const auto& s : this->_skeletons) if (s.alive()) file << 's' << ' ' << (int32_t)s.hitbox()._x << ' ' << (int32_t)s.hitbox()._y << std::endl;
-    for (const auto& a : this->_axemen) if (a.alive()) file << 'a' << ' ' << (int32_t)a.hitbox()._x << ' ' << (int32_t)a.hitbox()._y << std::endl;
-    for (const auto& g : this->_gunslingers) if (g.alive()) file << 'g' << ' ' << (int32_t)g.hitbox()._x << ' ' << (int32_t)g.hitbox()._y << std::endl;
+    for (const auto& s : this->_skeletons) if (s.alive()) file << 's' << ' ' << (int32_t)s.hitbox()._x << ' ' << (int32_t)s.hitbox()._y << ' ' << (int32_t)s.vx() << ' ' << (int32_t)s.vy() << std::endl;
+    for (const auto& a : this->_axemen) if (a.alive()) file << 'a' << ' ' << (int32_t)a.hitbox()._x << ' ' << (int32_t)a.hitbox()._y << ' ' << (int32_t)a.vx() << ' ' << (int32_t)a.vy() << std::endl;
+    for (const auto& g : this->_gunslingers) if (g.alive()) file << 'g' << ' ' << (int32_t)g.hitbox()._x << ' ' << (int32_t)g.hitbox()._y << ' ' << (int32_t)g.vx() << ' ' << (int32_t)g.vy() << std::endl;
 
     file.close();
 }
